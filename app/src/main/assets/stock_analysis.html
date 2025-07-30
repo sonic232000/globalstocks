@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>全球市场股票投资策略回测分析</title>
@@ -457,6 +457,11 @@
                 <label for="triggerPercent">首次买入系数 (%)</label>
                 <input type="number" id="triggerPercent" value="100" min="1">
             </div>
+            <!-- 新增的月份范围输入框 -->
+            <div class="control-group" id="referenceMonthRangeGroup">
+                <label for="referenceMonthRange">首次买入参考月份范围 (月)</label>
+                <input type="number" id="referenceMonthRange" value="1" min="1">
+            </div>
             <div class="control-group" id="additionalBuyTriggerPercentGroup">
                 <label for="additionalBuyTriggerPercent">追加买入系数 (%)</label>
                 <input type="number" id="additionalBuyTriggerPercent" value="10" min="1" max="99">
@@ -590,6 +595,9 @@
         const monthlyPurchaseDayInput = document.getElementById('monthlyPurchaseDay');
         const triggerPercentGroup = document.getElementById('triggerPercentGroup');
         const triggerPercentInput = document.getElementById('triggerPercent');
+        // 获取新增的月份范围输入框及其父元素
+        const referenceMonthRangeGroup = document.getElementById('referenceMonthRangeGroup');
+        const referenceMonthRangeInput = document.getElementById('referenceMonthRange');
         const additionalBuyTriggerPercentGroup = document.getElementById('additionalBuyTriggerPercentGroup');
         const additionalBuyTriggerPercentInput = document.getElementById('additionalBuyTriggerPercent');
 
@@ -958,10 +966,12 @@
             if (dcaEnabledCheckbox.checked) {
                 monthlyPurchaseDayGroup.style.display = 'flex';
                 triggerPercentGroup.style.display = 'none';
+                referenceMonthRangeGroup.style.display = 'none'; // 隐藏月份范围输入框
                 additionalBuyTriggerPercentGroup.style.display = 'flex';
             } else {
                 monthlyPurchaseDayGroup.style.display = 'none';
                 triggerPercentGroup.style.display = 'flex';
+                referenceMonthRangeGroup.style.display = 'flex'; // 显示月份范围输入框
                 additionalBuyTriggerPercentGroup.style.display = 'flex';
             }
         });
@@ -1092,7 +1102,7 @@
             startDateInput.value = `${startYear}-${startMonth}-${startDay}`;
 
             updateUIForStockBasic();
-            dcaEnabledCheckbox.dispatchEvent(new Event('change'));
+            dcaEnabledCheckbox.dispatchEvent(new Event('change')); // 确保新加入的输入框的初始显示状态正确
             checkChartJSLoaded();
             
             // 初始化收藏夹 - 从Android存储加载
@@ -1137,6 +1147,7 @@
                 const investmentAmount = parseFloat(investmentAmountInput.value);
                 const triggerPercent = parseFloat(triggerPercentInput.value) / 100;
                 const additionalBuyTriggerPercent = parseFloat(additionalBuyTriggerPercentInput.value) / 100;
+                const referenceMonthRange = parseInt(referenceMonthRangeInput.value); // 获取月份范围
                 currentStockSymbol = stockSymbolInput.value.toUpperCase();
 
                 const dcaEnabled = dcaEnabledCheckbox.checked;
@@ -1147,10 +1158,17 @@
                     statusEl.textContent = '请输入有效的股票代码和参数，且起始日期必须在终止日期之前！';
                     return;
                 }
+                if (!dcaEnabled && (isNaN(referenceMonthRange) || referenceMonthRange < 1)) {
+                    statusEl.textContent = '请输入有效的首次买入参考月份范围（至少为1个月）！';
+                    return;
+                }
+
 
                 // 获取股票数据
                 const fetchStartDate = new Date(startDate);
-                fetchStartDate.setMonth(fetchStartDate.getMonth() - 1);
+                // 为了计算首次买入触发价格，可能需要更早的数据
+                // 假设我们至少需要回溯 `referenceMonthRange` 个月的数据
+                fetchStartDate.setMonth(fetchStartDate.getMonth() - (dcaEnabled ? 1 : referenceMonthRange + 1)); // 额外加1个月作为缓冲
                 
                 const stockData = await getStockData(fetchStartDate.getTime(), endDate.getTime());
                 
@@ -1161,6 +1179,7 @@
 
                 statusEl.textContent = '历史数据获取成功，正在执行策略计算...';
 
+                // 过滤出回测日期范围内的数据
                 const relevantStockData = stockData.filter(d => d.time >= startDate.getTime() && d.time <= endDate.getTime());
                 
                 if (relevantStockData.length === 0) {
@@ -1176,7 +1195,7 @@
                     await executeDCAStrategy(relevantStockData, stockData, transactions, investmentAmount, monthlyPurchaseDay, additionalBuyTriggerPercent);
                 } else {
                     // 触发式策略实现...
-                    await executeTriggerStrategy(stockData, startDate, endDate, transactions, investmentAmount, triggerPercent, additionalBuyTriggerPercent);
+                    await executeTriggerStrategy(stockData, startDate, endDate, transactions, investmentAmount, triggerPercent, additionalBuyTriggerPercent, referenceMonthRange);
                 }
 
                 await displayResults(transactions, relevantStockData, stockInfo.currentPrice);
@@ -1248,7 +1267,7 @@
         }
 
         // 触发式策略执行
-        async function executeTriggerStrategy(stockData, startDate, endDate, transactions, investmentAmount, triggerPercent, additionalBuyTriggerPercent) {
+        async function executeTriggerStrategy(stockData, startDate, endDate, transactions, investmentAmount, triggerPercent, additionalBuyTriggerPercent, referenceMonthRange) {
             const monthlyData = stockData.reduce((acc, day) => {
                 const monthKey = new Date(day.time).toISOString().slice(0, 7);
                 if (!acc[monthKey]) acc[monthKey] = [];
@@ -1266,13 +1285,31 @@
                     continue;
                 }
 
-                const prevMonthKey = i > 0 ? sortedMonths[i - 1] : null;
-                if (!prevMonthKey || !monthlyData[prevMonthKey] || monthlyData[prevMonthKey].length === 0) {
+                // 计算首次买入触发价格：基于过去 referenceMonthRange 个月的最低价
+                let lookbackMinPrice = Infinity;
+                let relevantLookbackData = [];
+
+                // 迭代回溯，收集指定月份范围内的数据
+                for (let j = 1; j <= referenceMonthRange; j++) {
+                    const lookbackMonthIndex = i - j;
+                    if (lookbackMonthIndex >= 0) {
+                        const lookbackMonthKey = sortedMonths[lookbackMonthIndex];
+                        if (monthlyData[lookbackMonthKey] && monthlyData[lookbackMonthKey].length > 0) {
+                            relevantLookbackData = relevantLookbackData.concat(monthlyData[lookbackMonthKey]);
+                        }
+                    } else {
+                        // 如果回溯超出可用数据范围，则停止
+                        break;
+                    }
+                }
+
+                if (relevantLookbackData.length === 0) {
+                    // 如果回溯期内没有数据，则本月不进行首次买入判断
                     continue;
                 }
 
-                const prevMonthMinPrice = Math.min(...monthlyData[prevMonthKey].map(d => d.low));
-                const firstBuyTriggerPrice = prevMonthMinPrice * triggerPercent;
+                lookbackMinPrice = Math.min(...relevantLookbackData.map(d => d.low));
+                const firstBuyTriggerPrice = lookbackMinPrice * triggerPercent;
                 
                 let hasBoughtThisMonth = false;
                 let lastBuyPrice = 0;
@@ -1735,6 +1772,7 @@
             });
         }
     </script>
+
 
 
 
