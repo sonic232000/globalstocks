@@ -454,16 +454,16 @@
                 <input type="number" id="monthlyPurchaseDay" value="1" min="1" max="31">
             </div>
             <div class="control-group" id="triggerPercentGroup">
-                <label for="triggerPercent">首次买入系数 (%)</label>
+                <label for="triggerPercent">最低价%买入</label>
                 <input type="number" id="triggerPercent" value="100" min="1">
             </div>
             <!-- 新增的月份范围输入框 -->
             <div class="control-group" id="referenceMonthRangeGroup">
-                <label for="referenceMonthRange">月份范围</label>
+                <label for="referenceMonthRange">近N月最低价</label>
                 <input type="number" id="referenceMonthRange" value="1" min="1">
             </div>
             <div class="control-group" id="additionalBuyTriggerPercentGroup">
-                <label for="additionalBuyTriggerPercent">追加买入系数 (%)</label>
+                <label for="additionalBuyTriggerPercent">下跌%追加买入</label>
                 <input type="number" id="additionalBuyTriggerPercent" value="10" min="1" max="99">
             </div>
             <button id="runButton">开始回测</button>
