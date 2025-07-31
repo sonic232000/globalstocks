@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>全球市场股票投资策略回测分析</title>
@@ -164,7 +165,7 @@
             font-weight: bold;
             color: #555;
         }
-        input[type="date"], input[type="number"], input[type="text"] {
+        input[type="date"], input[type="number"], input[type="text"], select { /* Added select */
             padding: 10px;
             border: 1px solid var(--border-color);
             border-radius: 4px;
@@ -454,17 +455,30 @@
                 <input type="number" id="monthlyPurchaseDay" value="1" min="1" max="31">
             </div>
             <div class="control-group" id="triggerPercentGroup">
-                <label for="triggerPercent">首次买入系数 (%)</label>
-                <input type="number" id="triggerPercent" value="100" min="1">
+                <!-- 修改点 1: 移除 (%) -->
+                <label for="triggerPercent">首次波动率倍数</label>
+                <!-- 修改点 2: 默认值改为 1，min 允许小数 -->
+                <input type="number" id="triggerPercent" value="1" min="0.01" step="0.01">
             </div>
             <!-- 新增的月份范围输入框 -->
             <div class="control-group" id="referenceMonthRangeGroup">
-                <label for="referenceMonthRange">月份范围</label>
-                <input type="number" id="referenceMonthRange" value="1" min="1">
+                <label for="referenceMonthRange">波动率月份范围</label>
+                <input type="number" id="referenceMonthRange" value="12" min="1">
+            </div>
+            <!-- New volatility period selection -->
+            <div class="control-group" id="volatilityPeriodGroup">
+                <label for="volatilityPeriod">波动率周期</label>
+                <select id="volatilityPeriod">
+                    <option value="daily">日化</option>
+                    <option value="monthly" selected="">月化</option>
+                    <option value="annual">年化</option>
+                </select>
             </div>
             <div class="control-group" id="additionalBuyTriggerPercentGroup">
-                <label for="additionalBuyTriggerPercent">追加买入系数 (%)</label>
-                <input type="number" id="additionalBuyTriggerPercent" value="10" min="1" max="99">
+                <!-- 修改点 3: 移除 (%) -->
+                <label for="additionalBuyTriggerPercent">追加波动率倍数</label>
+                <!-- 修改点 4: 默认值改为 0.1，min 允许小数 -->
+                <input type="number" id="additionalBuyTriggerPercent" value="0.1" min="0.01" step="0.01">
             </div>
             <button id="runButton">开始回测</button>
         </div>
@@ -530,15 +544,65 @@
         const AndroidInterface = window.AndroidInterface || {
             getStockData: function(symbol, startTime, endTime, callback) {
                 console.log("AndroidInterface not available - using mock data");
-                setTimeout(() => callback('[]'), 100);
+                // Mock data for testing
+                // Generate mock stock data for 1810.HK (Xiaomi) for a year
+                const mockData = [];
+                let currentPrice = 12.0; // Starting price for Xiaomi
+                const start = new Date(startTime);
+                const end = new Date(endTime);
+                
+                for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+                    // Only include weekdays
+                    if (d.getDay() !== 0 && d.getDay() !== 6) {
+                        const change = (Math.random() - 0.5) * 0.5; // Price change up to 0.25
+                        currentPrice = Math.max(0.1, currentPrice + change); // Ensure price doesn't go below 0.1
+                        const open = currentPrice * (1 - (Math.random() - 0.5) * 0.01);
+                        const high = currentPrice + Math.random() * 0.2;
+                        const low = currentPrice - Math.random() * 0.2;
+                        mockData.push({
+                            time: d.getTime(),
+                            open: open,
+                            close: currentPrice,
+                            high: high,
+                            low: low,
+                            volume: Math.floor(Math.random() * 1000000)
+                        });
+                    }
+                }
+                setTimeout(() => callback(JSON.stringify(mockData)), 100);
             },
             getStockInfo: function(symbol, callback) {
                 console.log("AndroidInterface not available - using mock data");
-                setTimeout(() => callback('{"symbol":"' + symbol + '","companyName":"' + symbol + '","currency":"USD","currentPrice":100}'), 100);
+                // Mock stock info
+                let companyName = symbol;
+                let currency = "USD";
+                let currentPrice = 100;
+                if (symbol === "1810.HK") {
+                    companyName = "XIAOMI CORP";
+                    currency = "HKD";
+                    currentPrice = 12.5; // Mock current price for Xiaomi
+                } else if (symbol === "AAPL") {
+                    companyName = "Apple Inc.";
+                    currency = "USD";
+                    currentPrice = 175.0;
+                } else if (symbol === "TSLA") {
+                    companyName = "Tesla Inc.";
+                    currency = "USD";
+                    currentPrice = 250.0;
+                }
+                setTimeout(() => callback(`{"symbol":"${symbol}","companyName":"${companyName}","currency":"${currency}","currentPrice":${currentPrice}}`), 100);
             },
             getCurrentStockPrice: function(symbol, callback) {
                 console.log("AndroidInterface not available - using mock data");
-                setTimeout(() => callback('100'), 100);
+                let price = 100;
+                if (symbol === "1810.HK") {
+                    price = 12.5;
+                } else if (symbol === "AAPL") {
+                    price = 175.0;
+                } else if (symbol === "TSLA") {
+                    price = 250.0;
+                }
+                setTimeout(() => callback(price.toString()), 100);
             },
             // 新增的收藏夹接口
             saveFavorites: function(favoritesJson, callback) {
@@ -550,8 +614,9 @@
             },
             loadFavorites: function(callback) {
                 console.log("AndroidInterface not available - loadFavorites (mock)");
+                // Mock loading some favorites
                 setTimeout(() => {
-                    if (callback) eval(callback)('[]');
+                    if (callback) eval(callback)('[{"symbol":"AAPL","name":"Apple Inc."},{"symbol":"TSLA","name":"Tesla Inc."}]');
                 }, 100);
             },
             addFavorite: function(symbol, name, callback) {
@@ -600,6 +665,10 @@
         const referenceMonthRangeInput = document.getElementById('referenceMonthRange');
         const additionalBuyTriggerPercentGroup = document.getElementById('additionalBuyTriggerPercentGroup');
         const additionalBuyTriggerPercentInput = document.getElementById('additionalBuyTriggerPercent');
+        // New volatility period selection
+        const volatilityPeriodSelect = document.getElementById('volatilityPeriod');
+        const volatilityPeriodGroup = document.getElementById('volatilityPeriodGroup');
+
 
         // 收藏夹相关元素
         const favoritesListEl = document.getElementById('favoritesList');
@@ -617,7 +686,7 @@
         const totalStockQuantityNameEl = document.getElementById('totalStockQuantityName');
 
         const investmentCurrencyEl = document.getElementById('investmentCurrency');
-        const currentPriceCurrencyEl = document.getElementById('currentPriceCurrency');
+        const currentPriceCurrencyEl = document = document.getElementById('currentPriceCurrency');
         const totalInvestmentCurrencyEl = document.getElementById('totalInvestmentCurrency');
         const avgCostCurrencyEl = document.getElementById('avgCostCurrency');
         const currentValueCurrencyEl = document.getElementById('currentValueCurrency');
@@ -967,11 +1036,13 @@
                 monthlyPurchaseDayGroup.style.display = 'flex';
                 triggerPercentGroup.style.display = 'none';
                 referenceMonthRangeGroup.style.display = 'none'; // 隐藏月份范围输入框
+                volatilityPeriodGroup.style.display = 'none'; // Hide volatility period selection
                 additionalBuyTriggerPercentGroup.style.display = 'flex';
             } else {
                 monthlyPurchaseDayGroup.style.display = 'none';
                 triggerPercentGroup.style.display = 'flex';
                 referenceMonthRangeGroup.style.display = 'flex'; // 显示月份范围输入框
+                volatilityPeriodGroup.style.display = 'flex'; // Show volatility period selection
                 additionalBuyTriggerPercentGroup.style.display = 'flex';
             }
         });
@@ -1145,9 +1216,11 @@
                 const startDate = new Date(startDateInput.value);
                 const endDate = new Date(endDateInput.value);
                 const investmentAmount = parseFloat(investmentAmountInput.value);
-                const triggerPercent = parseFloat(triggerPercentInput.value) / 100;
-                const additionalBuyTriggerPercent = parseFloat(additionalBuyTriggerPercentInput.value) / 100;
+                // triggerPercentInput 和 additionalBuyTriggerPercentInput 现在是倍数
+                const triggerMultiplier = parseFloat(triggerPercentInput.value); // 修改点 5: 变量名更符合“倍数”
+                const additionalBuyMultiplier = parseFloat(additionalBuyTriggerPercentInput.value); // 修改点 6: 变量名更符合“倍数”
                 const referenceMonthRange = parseInt(referenceMonthRangeInput.value); // 获取月份范围
+                const volatilityPeriod = volatilityPeriodSelect.value; // Get volatility period
                 currentStockSymbol = stockSymbolInput.value.toUpperCase();
 
                 const dcaEnabled = dcaEnabledCheckbox.checked;
@@ -1159,7 +1232,7 @@
                     return;
                 }
                 if (!dcaEnabled && (isNaN(referenceMonthRange) || referenceMonthRange < 1)) {
-                    statusEl.textContent = '请输入有效的首次买入参考月份范围（至少为1个月）！';
+                    statusEl.textContent = '请输入有效的参考波动率月份范围（至少为1个月）！';
                     return;
                 }
 
@@ -1179,7 +1252,7 @@
 
                 statusEl.textContent = '历史数据获取成功，正在执行策略计算...';
 
-                // 过滤出回测日期范围内的数据
+                // 过滤出回测日期范围内的数据 (仅用于图表显示，实际策略使用完整 stockData)
                 const relevantStockData = stockData.filter(d => d.time >= startDate.getTime() && d.time <= endDate.getTime());
                 
                 if (relevantStockData.length === 0) {
@@ -1192,10 +1265,11 @@
                 // DCA策略或触发式策略
                 if (dcaEnabled) {
                     // DCA策略实现...
-                    await executeDCAStrategy(relevantStockData, stockData, transactions, investmentAmount, monthlyPurchaseDay, additionalBuyTriggerPercent);
+                    // DCA的追加买入仍按百分比，这里保持原样，因为additionalBuyTriggerPercentInput的默认值是0.1，而不是10
+                    await executeDCAStrategy(relevantStockData, stockData, transactions, investmentAmount, monthlyPurchaseDay, additionalBuyMultiplier); 
                 } else {
-                    // 触发式策略实现...
-                    await executeTriggerStrategy(stockData, startDate, endDate, transactions, investmentAmount, triggerPercent, additionalBuyTriggerPercent, referenceMonthRange);
+                    // 触发式策略实现 (波动率触发)...
+                    await executeTriggerStrategy(stockData, startDate, endDate, transactions, investmentAmount, triggerMultiplier, additionalBuyMultiplier, referenceMonthRange, volatilityPeriod);
                 }
 
                 await displayResults(transactions, relevantStockData, stockInfo.currentPrice);
@@ -1227,14 +1301,19 @@
                     const targetDcaDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), monthlyPurchaseDay);
                     let actualDcaDayData = null;
                     
-                    for (const d of stockData) {
+                    // 找到当月最接近或等于目标买入日的有效交易日
+                    for (const d of stockData) { // 使用完整的stockData确保能找到
                         const d_date = new Date(d.time);
-                        if (d_date >= targetDcaDate && d_date.getMonth() === currentDate.getMonth() && d_date.getFullYear() === currentDate.getFullYear()) {
+                        // 确保日期在当月，并且不早于目标DCA日
+                        if (d_date.getFullYear() === currentDate.getFullYear() && 
+                            d_date.getMonth() === currentDate.getMonth() && 
+                            d_date.getDate() >= targetDcaDate.getDate()) {
                             actualDcaDayData = d;
                             break;
                         }
                     }
 
+                    // 如果找到了当月的实际买入日，并且当前处理的日数据就是那个买入日
                     if (actualDcaDayData && actualDcaDayData.time === day.time) {
                         transactions.push({
                             date: new Date(day.time).toLocaleDateString(),
@@ -1249,9 +1328,11 @@
                     }
                 }
 
+                // 追加买入逻辑，基于上次买入价的百分比跌幅
                 if (lastBuyPrice > 0 && day.low <= lastBuyPrice * (1 - additionalBuyTriggerPercent)) {
-                    const calculatedTriggerPrice = lastBuyPrice * (1 - additionalBuyTriggerPercent);
-                    const executionPrice = Math.min(calculatedTriggerPrice, day.high);
+                    // 实际执行价格取触发价格和当日最高价的最小值，确保在当日价格范围内成交
+                    // 这里简化为当日收盘价，如果当日收盘价满足条件则买入
+                    const executionPrice = day.close; 
 
                     transactions.push({
                         date: new Date(day.time).toLocaleDateString(),
@@ -1266,85 +1347,168 @@
             }
         }
 
-        // 触发式策略执行
-        async function executeTriggerStrategy(stockData, startDate, endDate, transactions, investmentAmount, triggerPercent, additionalBuyTriggerPercent, referenceMonthRange) {
-            const monthlyData = stockData.reduce((acc, day) => {
-                const monthKey = new Date(day.time).toISOString().slice(0, 7);
-                if (!acc[monthKey]) acc[monthKey] = [];
-                acc[monthKey].push(day);
-                return acc;
-            }, {});
+        // Helper to calculate standard deviation
+        function calculateStdDev(arr) {
+            if (arr.length < 2) return 0; // Need at least two points for a return
+            const n = arr.length;
+            const mean = arr.reduce((a, b) => a + b) / n;
+            // Using sample standard deviation (n-1)
+            const variance = arr.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / (n - 1); 
+            return Math.sqrt(variance);
+        }
 
-            const sortedMonths = Object.keys(monthlyData).sort();
+        // 触发式策略执行 (波动率触发)
+        async function executeTriggerStrategy(stockData, startDate, endDate, transactions, investmentAmount, triggerMultiplier, additionalBuyMultiplier, referenceMonthRange, volatilityPeriod) { // 修改点 7: 变量名
+            // Group stock data by month and calculate monthly stats (high, low, avg_close)
+            const monthlyStats = {}; // { 'YYYY-MM': { high: X, low: Y, totalClose: Z, count: C, days: [...] } }
+            const sortedMonthKeys = [];
 
-            for (let i = 0; i < sortedMonths.length; i++) {
-                const currentMonthKey = sortedMonths[i];
-                const currentMonthDate = new Date(currentMonthKey + '-01T00:00:00Z');
-                
-                if (currentMonthDate < startDate || currentMonthDate > endDate) {
+            // Populate monthlyStats and sortedMonthKeys from the entire fetched stockData
+            stockData.forEach(day => {
+                const date = new Date(day.time);
+                const monthKey = date.toISOString().slice(0, 7); // YYYY-MM
+
+                if (!monthlyStats[monthKey]) {
+                    monthlyStats[monthKey] = {
+                        high: -Infinity,
+                        low: Infinity,
+                        totalClose: 0,
+                        count: 0,
+                        days: []
+                    };
+                    sortedMonthKeys.push(monthKey);
+                }
+
+                monthlyStats[monthKey].high = Math.max(monthlyStats[monthKey].high, day.high);
+                monthlyStats[monthKey].low = Math.min(monthlyStats[monthKey].low, day.low);
+                monthlyStats[monthKey].totalClose += day.close;
+                monthlyStats[monthKey].count++;
+                monthlyStats[monthKey].days.push(day);
+            });
+
+            sortedMonthKeys.sort(); // Ensure months are in chronological order
+
+            let lastBuyPrice = 0; // Price of the last purchase
+
+            for (let i = 0; i < sortedMonthKeys.length; i++) {
+                const currentMonthKey = sortedMonthKeys[i];
+                const currentMonthData = monthlyStats[currentMonthKey];
+                const currentMonthStartDate = new Date(currentMonthKey + '-01T00:00:00Z');
+
+                // Skip months outside the user-specified backtest range
+                if (currentMonthStartDate < startDate || currentMonthStartDate > endDate) {
                     continue;
                 }
 
-                // 计算首次买入触发价格：基于过去 referenceMonthRange 个月的最低价
-                let lookbackMinPrice = Infinity;
-                let relevantLookbackData = [];
-
-                // 迭代回溯，收集指定月份范围内的数据
-                for (let j = 1; j <= referenceMonthRange; j++) {
-                    const lookbackMonthIndex = i - j;
+                // --- Calculate Volatility for the lookback period ---
+                let dataForVolatilityCalculation = []; // Store full day objects here
+                // Go back `referenceMonthRange` months from the *start* of the current month
+                // Collect daily data for the lookback period
+                for (let j = 0; j < referenceMonthRange; j++) {
+                    const lookbackMonthIndex = i - (j + 1); // Start from the month *before* currentMonth
                     if (lookbackMonthIndex >= 0) {
-                        const lookbackMonthKey = sortedMonths[lookbackMonthIndex];
-                        if (monthlyData[lookbackMonthKey] && monthlyData[lookbackMonthKey].length > 0) {
-                            relevantLookbackData = relevantLookbackData.concat(monthlyData[lookbackMonthKey]);
+                        const lookbackMonthKey = sortedMonthKeys[lookbackMonthIndex];
+                        const lookbackMonthStats = monthlyStats[lookbackMonthKey];
+                        if (lookbackMonthStats && lookbackMonthStats.days.length > 0) {
+                            // Ensure days are sorted to get correct P_t and P_{t-1}
+                            const sortedDays = lookbackMonthStats.days.sort((a, b) => a.time - b.time);
+                            dataForVolatilityCalculation.push(...sortedDays); // Push full day objects
                         }
                     } else {
-                        // 如果回溯超出可用数据范围，则停止
-                        break;
+                        break; // No more historical data for lookback
+                    }
+                }
+                // Sort the collected data by time to ensure correct log return calculation
+                dataForVolatilityCalculation.sort((a, b) => a.time - b.time);
+
+
+                let averageCalculatedVolatility = 0.01; // Default to 1% daily volatility if not enough data
+
+                if (dataForVolatilityCalculation.length >= 2) { // Need at least 2 prices to calculate one return
+                    let dailyLogReturns = [];
+                    for (let k = 1; k < dataForVolatilityCalculation.length; k++) {
+                        // Calculate logarithmic return: ln(P_t / P_{t-1})
+                        const ret = Math.log(dataForVolatilityCalculation[k].close / dataForVolatilityCalculation[k-1].close);
+                        dailyLogReturns.push(ret);
+                    }
+
+                    let dailyVolatility = calculateStdDev(dailyLogReturns);
+
+                    // Annualize/Monthly-ize based on selection
+                    averageCalculatedVolatility = dailyVolatility; // This is daily volatility
+                    if (volatilityPeriod === 'monthly') {
+                        averageCalculatedVolatility = dailyVolatility * Math.sqrt(21); // Approx 21 trading days in a month
+                    } else if (volatilityPeriod === 'annual') {
+                        averageCalculatedVolatility = dailyVolatility * Math.sqrt(252); // Approx 252 trading days in a year
+                    }
+                } else {
+                    console.warn(`Not enough historical data to calculate volatility for ${currentMonthKey} (need at least 2 prices). Using default volatility: ${averageCalculatedVolatility}`);
+                }
+
+                // --- Now use averageCalculatedVolatility for trigger conditions ---
+                // The `lastMonthAvgPrice` is still needed for the first buy reference.
+                // It should be the average price of the *last month* (month `i-1`).
+                let lastMonthAvgPrice = 0;
+                const lastMonthIndex = i - 1;
+                if (lastMonthIndex >= 0) {
+                    const lastMonthKey = sortedMonthKeys[lastMonthIndex];
+                    const lastMonthStats = monthlyStats[lastMonthKey];
+                    if (lastMonthStats && lastMonthStats.count > 0) {
+                        lastMonthAvgPrice = lastMonthStats.totalClose / lastMonthStats.count;
                     }
                 }
 
-                if (relevantLookbackData.length === 0) {
-                    // 如果回溯期内没有数据，则本月不进行首次买入判断
-                    continue;
+                // Fallback for the very first month if no prior data for lastMonthAvgPrice
+                if (lastMonthAvgPrice === 0) {
+                    if (currentMonthData && currentMonthData.days.length > 0) {
+                        lastMonthAvgPrice = currentMonthData.days[0].close; // Use first day of current month
+                    } else {
+                        console.warn(`No last month average price or current month data for ${currentMonthKey}, skipping first buy trigger.`);
+                        continue; // Skip this month for triggers if no price reference
+                    }
                 }
 
-                lookbackMinPrice = Math.min(...relevantLookbackData.map(d => d.low));
-                const firstBuyTriggerPrice = lookbackMinPrice * triggerPercent;
-                
-                let hasBoughtThisMonth = false;
-                let lastBuyPrice = 0;
+                // Calculate trigger factors based on the new calculated volatility and multipliers
+                // Multipliers are now directly used as numerical values (e.g., 1 for 1x, 0.1 for 0.1x)
+                const calculatedFirstBuyTrigger = averageCalculatedVolatility * triggerMultiplier; // 修改点 8: 移除 / 100
+                const calculatedAdditionalBuyTrigger = averageCalculatedVolatility * additionalBuyMultiplier; // 修改点 9: 移除 / 100
 
-                const sortedDaysInMonth = monthlyData[currentMonthKey].sort((a, b) => a.time - b.time);
+                let hasBoughtThisMonth = false;
+                // Sort days within the current month to process chronologically
+                const sortedDaysInMonth = currentMonthData.days.sort((a, b) => a.time - b.time);
 
                 for (const day of sortedDaysInMonth) {
-                    if (day.time < startDate.getTime() || day.time > endDate.getTime()) {
+                    // Only process days within the user-specified backtest range
+                    if (new Date(day.time) < startDate || new Date(day.time) > endDate) {
                         continue;
                     }
 
-                    if (!hasBoughtThisMonth && day.low <= firstBuyTriggerPrice) {
-                        const executionPrice = Math.min(firstBuyTriggerPrice, day.high);
+                    // First Buy Condition: current close price <= last month's average price * (1 - calculatedFirstBuyTrigger)
+                    if (!hasBoughtThisMonth && day.close <= lastMonthAvgPrice * (1 - calculatedFirstBuyTrigger)) {
+                        const executionPrice = day.close;
                         transactions.push({
                             date: new Date(day.time).toLocaleDateString(),
                             rawDate: new Date(day.time),
-                            reason: '首次触发',
+                            reason: `首次触发 (波动率倍数: ${triggerMultiplier}, ${volatilityPeriod}化波动率: ${(averageCalculatedVolatility * 100).toFixed(2)}%)`, // 修改点 10: 理由中的倍数显示
                             price: executionPrice,
                             invested: investmentAmount,
                             quantity: investmentAmount / executionPrice
                         });
                         hasBoughtThisMonth = true;
-                        lastBuyPrice = executionPrice;
-                    } else if (hasBoughtThisMonth && day.low <= lastBuyPrice * (1 - additionalBuyTriggerPercent)) {
-                        const calculatedTriggerPrice = lastBuyPrice * (1 - additionalBuyTriggerPercent);
-                        const executionPrice = Math.min(calculatedTriggerPrice, day.high);
+                        lastBuyPrice = executionPrice; // Update last buy price for additional buys
+                    }
+                    // Additional Buy Condition: current close price <= last buy price * (1 - calculatedAdditionalBuyTrigger)
+                    else if (hasBoughtThisMonth && lastBuyPrice > 0 && day.close <= lastBuyPrice * (1 - calculatedAdditionalBuyTrigger)) {
+                        const executionPrice = day.close;
                         transactions.push({
                             date: new Date(day.time).toLocaleDateString(),
                             rawDate: new Date(day.time),
-                            reason: `追加买入 (-${(additionalBuyTriggerPercent * 100).toFixed(0)}%)`,
+                            reason: `追加买入 (波动率倍数: ${additionalBuyMultiplier}, ${volatilityPeriod}化波动率: ${(averageCalculatedVolatility * 100).toFixed(2)}%)`, // 修改点 11: 理由中的倍数显示
                             price: executionPrice,
                             invested: investmentAmount,
                             quantity: investmentAmount / executionPrice
                         });
-                        lastBuyPrice = executionPrice;
+                        lastBuyPrice = executionPrice; // Update last buy price for subsequent additional buys
                     }
                 }
             }
@@ -1772,8 +1936,6 @@
             });
         }
     </script>
-
-
 
 
 </body></html>

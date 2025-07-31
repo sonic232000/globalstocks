@@ -8,7 +8,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.thomas.globalstocks"
+        applicationId = "com.thomas.VolaBuy"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
